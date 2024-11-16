@@ -63,7 +63,7 @@ class DataProvider with ChangeNotifier {
           notifications: notifications,
         );
 
-        await _saveDataToCache(context);
+        // await _saveDataToCache(context);
       } catch (e) {
         logger.e("Error fetching online data: $e");
       }

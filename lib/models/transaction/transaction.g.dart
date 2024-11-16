@@ -26,7 +26,7 @@ class TransactionAdapter extends TypeAdapter<Transaction> {
       currency: fields[3] as String,
       type: fields[4] as TransactionType,
       status: fields[5] as TransactionStatus,
-      createdAt: fields[6] as DateTime?,
+      createdAt: fields[6] as DateTime,
     );
   }
 

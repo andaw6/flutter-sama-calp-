@@ -14,7 +14,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.primaryColor,
       elevation: 0,
       leading: IconButton(
         icon: const Icon(Icons.menu, color: Colors.white),
@@ -42,6 +41,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
         ),
       ],
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              AppColors.primaryLight,  // Première couleur du dégradé
+              AppColors.primaryDark,   // Deuxième couleur du dégradé
+            ],
+          ),
+        ),
+      ),
     );
   }
 

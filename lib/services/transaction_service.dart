@@ -21,14 +21,20 @@ class TransactionService {
         ? (isSender ? TransactionType.send : TransactionType.receive)
         : transaction.type;
 
+    double amount = transaction.amount;
+    if (transactionType == TransactionType.withdraw ||
+        transactionType == TransactionType.send ||
+        transactionType == TransactionType.purchase) {
+      amount = -amount;
+    }
     final baseTransaction = TransactionItem(
       id: transaction.id,
-      amount: transaction.amount,
+      amount: amount,
       feeAmount: transaction.feeAmount,
       currency: transaction.currency,
       type: transactionType,
       status: transaction.status,
-      createdAt: transaction.createdAt!,
+      createdAt: transaction.createdAt,
       user: transaction.creditPurchase != null
           ? UserInfo(
               id: transaction.id,

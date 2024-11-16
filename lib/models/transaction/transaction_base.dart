@@ -28,7 +28,7 @@ class TransactionBase {
   final TransactionStatus status;
 
   @HiveField(6)
-  final DateTime? createdAt;
+  final DateTime createdAt;
 
   TransactionBase({
     required this.id,
@@ -37,7 +37,7 @@ class TransactionBase {
     required this.currency,
     required this.type,
     required this.status,
-    this.createdAt
+    required this.createdAt
   });
 
   factory TransactionBase.fromJson(Map<String, dynamic> json) {

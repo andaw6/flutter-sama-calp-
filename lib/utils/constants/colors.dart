@@ -26,6 +26,12 @@ class AppColors {
   static const Color accentColor = Color(0xFF99D5F1);
   static const Color backgroundColor = Color(0xFFF5F9FC);
 
+  static const Color cardBackground = Colors.white;
+  static const Color success = Color(0xFF00C48C);
+  static const Color error = Color(0xFFFF647C);
+
+  static const Color secondaryLight = Color(0xFFEEF2FF);
+
   static const MyColor codePage = MyColor(
     primaryColor: Color(0xFF2A3F54),
     secondaryColor: Color(0xFF4D6E92),
