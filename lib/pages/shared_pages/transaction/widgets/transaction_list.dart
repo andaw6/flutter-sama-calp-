@@ -4,7 +4,7 @@ import 'package:wave_odc/models/transaction/transaction.dart';
 import 'package:wave_odc/models/transaction/transaction_item.dart';
 import 'package:wave_odc/models/users/user.dart';
 import 'package:wave_odc/pages/shared_pages/transaction/widgets/transaction_item.dart';
-import 'package:wave_odc/services/transaction_service.dart';
+import 'package:wave_odc/services/transaction/transaction_service.dart';
 
 class TransactionList extends StatefulWidget {
   final List<Transaction> transactions;

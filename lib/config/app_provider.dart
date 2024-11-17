@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:wave_odc/pages/auth/controllers/auth_controller.dart';
 import 'package:wave_odc/providers/cache_provider.dart';
-import 'package:wave_odc/services/auth_service.dart';
-import 'package:wave_odc/services/bill_service.dart';
-import 'package:wave_odc/services/company_service.dart';
+import 'package:wave_odc/services/auth/auth_service.dart';
+import 'package:wave_odc/services/auth/jwt_service.dart';
+import 'package:wave_odc/services/auth/token_service.dart';
+import 'package:wave_odc/services/bill/bill_service.dart';
+import 'package:wave_odc/services/company/company_service.dart';
 import 'package:wave_odc/services/config_service.dart';
-import 'package:wave_odc/services/contact_service.dart';
-import 'package:wave_odc/services/notification_service.dart';
+import 'package:wave_odc/services/contact/contact_service.dart';
+import 'package:wave_odc/services/notification/notification_service.dart';
 import 'package:wave_odc/services/provider/http.dart';
 import 'package:wave_odc/services/provider/interfaces/IApiService.dart';
-import 'package:wave_odc/services/token_expiry_service.dart';
-import 'package:wave_odc/services/token_service.dart';
-import 'package:wave_odc/services/transaction_service.dart';
-import 'package:wave_odc/services/user_auth_service.dart';
-import 'package:wave_odc/services/user_service.dart';
+import 'package:wave_odc/services/auth/token_expiry_service.dart';
+import 'package:wave_odc/services/transaction/transaction_service.dart';
+import 'package:wave_odc/services/auth/user_auth_service.dart';
+import 'package:wave_odc/services/user/user_service.dart';
 
 final GetIt locator = GetIt.instance;
 
@@ -39,4 +40,5 @@ void setupLocator() {
   locator.registerLazySingleton(() => ContactService());
   locator.registerLazySingleton(() => CompanyService());
   locator.registerLazySingleton(() => BillService());
+  locator.registerLazySingleton(() => JwtService());
 }

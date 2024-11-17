@@ -8,6 +8,7 @@ class RegisterForm extends StatefulWidget {
   final Color primaryColor;
   final Color secondaryColor;
   final Color backgroundColor;
+  final Map<String, TextEditingController> controllers;
 
   const RegisterForm({
     super.key,
@@ -15,6 +16,7 @@ class RegisterForm extends StatefulWidget {
     required this.primaryColor,
     required this.secondaryColor,
     required this.backgroundColor,
+    required this.controllers,
   });
 
   @override
@@ -22,7 +24,7 @@ class RegisterForm extends StatefulWidget {
 }
 
 class RegisterFormState extends State<RegisterForm> {
-  final Map<String, TextEditingController> _controllers = {
+  final Map<String, TextEditingController> controllers = {
     'name': TextEditingController(),
     'phone': TextEditingController(),
     'email': TextEditingController(),
@@ -160,7 +162,7 @@ class RegisterFormState extends State<RegisterForm> {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: CustomTextField(
-                    controller: _controllers[field['key']]!,
+                    controller: widget.controllers[field['key']]!,
                     label: field['label'] as String,
                     icon: field['icon'] as IconData,
                     primaryColor: widget.primaryColor,
@@ -195,7 +197,7 @@ class RegisterFormState extends State<RegisterForm> {
 
   @override
   void dispose() {
-    for (var controller in _controllers.values) {
+    for (var controller in widget.controllers.values) {
       controller.dispose();
     }
     super.dispose();

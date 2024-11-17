@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wave_odc/config/app_provider.dart';
 import 'package:wave_odc/models/users/user.dart';
 import 'package:wave_odc/pages/client/home/home.dart';
-import 'package:wave_odc/services/auth_service.dart';
+import 'package:wave_odc/services/auth/auth_service.dart';
 import 'package:wave_odc/utils/constants/colors.dart';
 
 class AsideBar extends StatelessWidget {
@@ -68,7 +68,7 @@ class AsideBar extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const Home()),
               );
             }),
-            _buildDrawerItem(context, Icons.swap_horiz_outlined, 'Transactions', () {
+            _buildDrawerItem(context, Icons.swap_horiz_outlined, 'Transfert Programmé', () {
               Navigator.pop(context);
             }),
             _buildDrawerItem(context, Icons.receipt_outlined, 'Factures', () {
@@ -92,15 +92,15 @@ class AsideBar extends StatelessWidget {
               Icons.exit_to_app,
               'Déconnexion',
                   () async {
-                if (context.mounted) {
-                  await authService.logout(callback: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/login',
-                          (route) => false,
-                    );
-                  }, removeUser: true);
-                }
+                    if (context.mounted) {
+                      await authService.logout(callback: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/login',
+                              (route) => false,
+                        );
+                      }, removeUser: true);
+                    }
               },
               color: Colors.red,
             ),

@@ -6,23 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 class SignUpPrompt extends StatelessWidget {
   const SignUpPrompt({super.key});
 
-
-  testNotification(){
-    AwesomeNotifications().createNotification(
-        content: NotificationContent(
-            id: 10,
-            channelKey: "basic_channel",
-          title: "Test notification Sama Calpé",
-          body: "Simple  Button"
-        )
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        testNotification();
         Navigator.pushReplacementNamed(context, "/register");
       },
       child: RichText(

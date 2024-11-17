@@ -173,4 +173,13 @@ class CacheProvider {
   Future<void> clearBills() async => await _deleteAll(_billBox);
   Future<void> clearContacts() async => await _deleteAll(_contactBox);
   Future<void> clearCompanies() async => await _deleteAll(_companyBox);
+  Future<void> clearNotifications() async => await _deleteAll(_notificationBox);
+
+  void clear() async {
+    await clearContacts();
+    await clearNotifications();
+    await clearTransactions();
+    await clearUsers();
+    await clearBills();
+  }
 }

@@ -6,8 +6,13 @@ import 'package:wave_odc/pages/auth/login/login.dart';
 import 'package:wave_odc/pages/auth/register/register.dart';
 import 'package:wave_odc/pages/auth/verify_code/verify_code.dart';
 import 'package:wave_odc/pages/client/home/home.dart' as client;
+import 'package:wave_odc/pages/client/transaction/transaction.dart';
 import 'package:wave_odc/pages/vendor/home/home.dart' as vendor;
-import 'package:wave_odc/services/user_auth_service.dart';
+import 'package:wave_odc/pages/client/transfer/transfer.dart';
+import 'package:wave_odc/pages/vendor/transaction/transaction.dart';
+
+
+import 'package:wave_odc/services/auth/user_auth_service.dart';
 
 Future<Widget> getInitialScreen() async {
   UserAuthService userAuthService = locator<UserAuthService>();
@@ -33,8 +38,11 @@ final routes = {
         },
       ),
   "/register": (context) => const RegisterPage(),
+  "/error": (context) => ErrorPage(onRetry: ()=>login(context)),
   "/verify/code": (context) => const VerifyCodePage(),
   "/client/home": (context) => const client.Home(),
   "/vendor/home": (context) => const vendor.Home(),
-  "/error": (context) => ErrorPage(onRetry: ()=>login(context))
+  "/client/transfer": (context) => const Transfer(),
+  "/vendor/transactions": (context)=>const TransactionVendor(),
+  "/client/transactions": (context)=>const TransactionClient(),
 };

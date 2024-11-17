@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wave_odc/models/transaction/transaction.dart';
-import 'package:wave_odc/pages/client/home/widgets/action_button_widget.dart';
 import 'package:wave_odc/pages/client/home/widgets/balance_card_widget.dart';
 import 'package:wave_odc/pages/client/layouts/layout.dart';
+import 'package:wave_odc/pages/shared_pages/qr_code_scanner_page/qr_code_scanner_page.dart';
 import 'package:wave_odc/pages/shared_pages/transaction/widgets/transaction_list.dart';
 import 'package:wave_odc/providers/data_provider.dart';
+import 'package:wave_odc/shared/widgets/action_button.dart';
 import 'package:wave_odc/utils/constants/colors.dart';
 
 class Home extends StatefulWidget {
@@ -24,6 +24,7 @@ class HomePageState extends State<Home> {
       'color': AppColors.secondaryColor,
       'label': "Transfert",
       'page': const Scaffold(),
+      'action': (context)=> Navigator.pushReplacementNamed(context, "/client/transfer"),
     },
     {
       'icon': Icons.receipt_long,
@@ -41,7 +42,7 @@ class HomePageState extends State<Home> {
       'icon': Icons.qr_code,
       'color': AppColors.secondaryColor,
       'label': "Scanner",
-      'page': const Scaffold(),
+      'page': QRCodeScannerPage(),
     },
   ];
 
@@ -51,11 +52,6 @@ class HomePageState extends State<Home> {
         builder: (context) => page,
       ),
     );
-  }
-
-  List<Transaction> _getRecentTransactions(List<Transaction> transactions) {
-    transactions.sort((a, b) => b.createdAt.compareTo(a.createdAt));
-    return transactions.take(5).toList();
   }
 
   @override
@@ -122,7 +118,7 @@ class HomePageState extends State<Home> {
                                 icon: action['icon'] as IconData,
                                 color: action['color'] as Color,
                                 label: action['label'] as String,
-                                onPressed: () => _navigateTo(action['page']),
+                                onPressed:action['action'] != null? ()=>action["action"](context) : () => _navigateTo(action['page']),
                               ),
                             ),
                           );
@@ -165,7 +161,10 @@ class HomePageState extends State<Home> {
                           Padding(
                             padding: const EdgeInsets.only(right: 8),
                             child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushReplacementNamed(context, "/client/transactions");
+                                provider.setSelectedIndex(1);
+                              },
                               style: TextButton.styleFrom(
                                 foregroundColor: AppColors.primaryLight,
                               ),
@@ -183,7 +182,7 @@ class HomePageState extends State<Home> {
                   ),
                 ),
                 TransactionList(
-                  transactions: _getRecentTransactions(provider.context.transactions),
+                  transactions: provider.context.transactions.take(5).toList(),
                   user: provider.context.user,
                 ),
                 const SliverPadding(

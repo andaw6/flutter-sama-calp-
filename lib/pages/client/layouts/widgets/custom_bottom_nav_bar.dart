@@ -43,13 +43,13 @@ class CustomBottomNavBar extends StatelessWidget {
             label: 'Portefeuille',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.history_outlined),
-            activeIcon: Icon(Icons.history),
-            label: 'Historique',
+            icon: Icon(Icons.settings_outlined),
+            activeIcon: Icon(Icons.settings),
+            label: 'Paramètre',
           ),
         ],
         currentIndex: selectedIndex,
-        selectedItemColor: AppColors.primaryColor, // Replace with your AppColors.secondaryColor if needed
+        selectedItemColor: AppColors.primaryDark, // Replace with your AppColors.secondaryColor if needed
         unselectedItemColor: Colors.grey,
         selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),

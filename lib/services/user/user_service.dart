@@ -38,4 +38,19 @@ class UserService {
       return null;
     }
   }
+
+  Future<UserInfo?> findById({required String id}) async {
+    final ApiResponse<Map<String, dynamic>> response = await _apiService.get(
+      "/$id",
+      fromJsonT: (json) => json as Map<String, dynamic>,
+    );
+
+    if (response.success) {
+      return UserInfo.fromJson(response.data!);
+    }
+    {
+      logger.e("Utilisateur avec le numéro $id n'exist pas");
+      return null;
+    }
+  }
 }

@@ -6,11 +6,11 @@ import 'package:wave_odc/pages/auth/code/widgets/pin_dots_widget.dart';
 import 'package:wave_odc/pages/auth/code/widgets/pin_logo_widget.dart';
 import 'package:wave_odc/pages/auth/code/widgets/pin_title_widget.dart';
 import 'package:wave_odc/pages/auth/controllers/auth_controller.dart';
-import 'package:wave_odc/services/user_auth_service.dart';
+import 'package:wave_odc/services/auth/user_auth_service.dart';
 import 'package:wave_odc/utils/constants/colors.dart';
 import 'dart:math' as math;
 
-import 'package:wave_odc/services/auth_service.dart';
+import 'package:wave_odc/services/auth/auth_service.dart';
 
 class PinCodeScreen extends StatefulWidget {
   const PinCodeScreen({super.key});

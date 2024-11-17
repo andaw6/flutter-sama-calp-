@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'token_service.dart';
+import 'package:wave_odc/services/auth/token_service.dart';
 
 class TokenExpiryService {
   final TokenService _tokenService;

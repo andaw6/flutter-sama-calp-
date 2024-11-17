@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:wave_odc/config/app_provider.dart';
 import 'package:wave_odc/models/api_reponse.dart';
+import 'package:wave_odc/services/auth/token_service.dart';
 import 'package:wave_odc/services/config_service.dart';
-import 'package:wave_odc/services/token_service.dart';
 import 'package:wave_odc/services/provider/interfaces/IApiService.dart';
 import 'package:wave_odc/utils/api_url.dart';
 

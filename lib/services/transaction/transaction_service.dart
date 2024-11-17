@@ -62,7 +62,9 @@ class TransactionService {
     final ApiResponse<Map<String, dynamic>> response = await _apiService
         .get("/current", fromJsonT: (json) => json as Map<String, dynamic>);
     if (response.success) {
-      return response.dataList!.map((e) => Transaction.fromJson(e)).toList();
+      List<Transaction> transactions = response.dataList!.map((e) => Transaction.fromJson(e)).toList();
+      transactions.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+      return transactions.toList();
     } else {
       throw Exception("Erreur lors de la récupération de l'utilisateur");
     }

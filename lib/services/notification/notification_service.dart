@@ -10,13 +10,20 @@ class NotificationService {
 
   NotificationService() : _apiService = locator<IApiService>(param1: "/notifications");
 
-  Future<List<Notification>> getNotifications() async {
+  Future<List<Notification>>  getNotifications() async {
     final ApiResponse<Map<String, dynamic>> response = await _apiService
-        .get("/current", fromJsonT: (json) => json as Map<String, dynamic>);
+        .get("/current/unread", fromJsonT: (json) => json as Map<String, dynamic>);
     if (response.success) {
       return response.dataList!.map((e) => Notification.fromJson(e)).toList();
     } else {
       throw Exception("Erreur lors de la récupération de l'utilisateur");
     }
+  }
+
+
+  Future<bool> markRead({required String id}) async{
+    final ApiResponse<Map<String, dynamic>> response = await _apiService
+        .get("/mark/read/$id", fromJsonT: (json) => json as Map<String, dynamic>);
+   return Future.value(response.success);
   }
 }

@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:wave_odc/config/app_provider.dart';
 import 'package:wave_odc/enums/user/user_role.dart';
 import 'package:wave_odc/providers/data_provider.dart';
-import 'package:wave_odc/services/auth_service.dart';
-import 'package:wave_odc/services/user_auth_service.dart';
+import 'package:wave_odc/services/auth/auth_service.dart';
+import 'package:wave_odc/services/auth/user_auth_service.dart';
 import 'package:wave_odc/shared/widgets/error_dialog_widget.dart';
 
 class AuthController {
@@ -15,7 +15,14 @@ class AuthController {
   AuthController(this._context);
 
   Future<bool> login({required String phone, required String password, bool showError=false}) async {
-    final isValid = await _authService.login(phone: phone, password: password);
+    bool isOffline = await Provider.of<DataProvider>(_context, listen: false).isOnline;
+    late bool isValid;
+    // if(isOffline){
+    //   isValid = await _authService.loginOffline(password: password);
+    // }else{
+    //   isValid = await _authService.login(phone: phone, password: password);
+    // }
+    isValid = await _authService.login(phone: phone, password: password);
 
     if (isValid) {
       await Provider.of<DataProvider>(_context, listen: false).fetchData();

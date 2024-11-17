@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wave_odc/utils/constants/colors.dart';
 
 class ButtonCard extends StatelessWidget {
   final Icon icon;
@@ -25,7 +26,7 @@ class ButtonCard extends StatelessWidget {
         ),
         child: ListTile(
           leading: CircleAvatar(
-            backgroundColor: color ?? const Color(0xFF2962FF), // Utilisation de la couleur passée, sinon la couleur par défaut
+            backgroundColor: color ?? AppColors.primaryDark, // Utilisation de la couleur passée, sinon la couleur par défaut
             child: Icon(
               icon.icon,
               color: Colors.white, // La couleur de l'icône est toujours blanche
